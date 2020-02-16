@@ -1,0 +1,150 @@
+#! /usr/bin/env lnav -i
+{
+       	"sfslice" : {
+        	"title" : "Solidfire sf-slice Log File",
+        	"description" : "Log description for SolidFire based sf-slice",
+        	"url" : "http://solidfire.com",
+                "file-pattern" : "sf-slice.\\w*",
+		"regex" : {
+			"error" : {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<hostname>\\w*[a-zA-Z0-9-]*) (?<service>\\w*-?\\d?\\[\\d{5}\\]): \\[(?<protocol>(\\w*-?\\d?))\\] (?<pid>\\d{5}) (?<srv>\\w[a-zA-Z0-9-_]*) (?<code>\\w[a-zA-Z/.]*):(?<codeline>\\d*):(?<event>\\w*)\\(?\\)?\\|(?<body>.*)$"
+			},
+			"info" : {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<module>\\w*[a-zA-Z0-9-]*) - (?<level>\\w*)  \\[(?<function>\\w[a-zA-Z0-9@ \\-:\\.\\/$()]*)\\] - (?<body>.*)$"
+			}
+		},
+		"multiline" : false,
+		"timestamp-field" : "timestamp",
+		"level-field" : "level",
+		"value" : {
+			"hostname" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Hostname of the log mesage"
+                        },
+			"module" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Moduke in info that is logging"
+                        },
+			"function" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Function in info that is logging"
+                        },
+			"service" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Service name and id"
+                        },
+			"protocol" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Message of the protocol"
+                        },
+			"pid" : {
+                                "kind" : "integer",
+                                "foreign-key" : true,
+                                "description" : "pid"
+                        },
+			"srv" : {
+				"kind" : "string",
+				"foreign-key" : true,
+                                "description" : "Service"
+			},
+			"code" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "The code path and filename"
+                        },
+			"codeline" : {
+                                "kind" : "integer",
+                                "foreign-key" : true,
+                                "description" : "Line of code that triggered the event"
+                        },
+			"event" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "The logfile event"
+                        },
+			"body" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Body of the message"
+                	}
+		},
+		"sample" : [
+			{
+				"line" : "2019-11-20T18:48:23.159512Z NLABPICT061903 master-1[61613]: [Util] 61650 TickerIOService shared/Ticker.cpp:256:TimeoutCallback|Ticker callback took too long seconds=2.0025 callback=Bootstrapper::searchTicke"
+			},
+			{
+				"line" : "2019-11-20T18:48:29.272231Z NLABPICT061903 master-1[61613]: [Bootstrapper] 62029 BeaconIOService serviceshared/ClusterLocator.cpp:313:FromRawString|Got invalid JSON for FindClusterM"
+			},
+			{
+				"line" : "2019-11-20T18:47:37.776914Z NLABPICT061903 sfsvcmgr[22428]: [Process] 22433 signal_handler sfsvcmgr/sfsvcmgr.cpp:775:ProcessDied|PID: 22432 NOT found in either the process list or the stopped process list."
+			},
+			{
+				"line" : "2019-11-20T18:47:49.140471Z NLABPICT061903 master-1[59162]: [Util] 59200 TickerIOService shared/Ticker.cpp:256:TimeoutCallback|Ticker callback took too long seconds=2.00238 callback=Bootstrapper::searchTicker"
+			},
+			{
+				"line" : "2019-11-20T18:47:56.366994Z NLABPICT061903 master-1[59162]: [Util] 59200 TickerIOService shared/Ticker.cpp:256:TimeoutCallback|Ticker callback took too long seconds=2.00245 callback=Bootstrapper::searchTicker"
+			},
+			{
+				"line" : "2019-11-20T18:47:57.464679Z NLABPICT061903 sfsvcmgr[59128]: [Process] 59139 signal_handler sfsvcmgr/sfsvcmgr.cpp:775:ProcessDied|PID: 59138 NOT found in either the process list or the stopped process list."
+			},
+			{
+				"line" : "2019-11-20T18:48:08.835521Z NLABPICT061903 master-1[61613]: [Util] 61650 TickerIOService shared/Ticker.cpp:256:TimeoutCallback|Ticker callback took too long seconds=2.0024 callback=Bootstrapper::searchTicker"
+			},
+			{
+				"line" : "2019-11-20T18:48:15.895115Z NLABPICT061903 master-1[61613]: [Util] 61650 TickerIOService shared/Ticker.cpp:256:TimeoutCallback|Ticker callback took too long seconds=2.00246 callback=Bootstrapper::searchTicker"
+			},
+			{
+				"line" : "2019-11-20T18:48:23.159512Z NLABPICT061903 master-1[61613]: [Util] 61650 TickerIOService shared/Ticker.cpp:256:TimeoutCallback|Ticker callback took too long seconds=2.0025 callback=Bootstrapper::searchTicker"
+			},
+			{
+				"line" : "2019-11-20T18:48:27.103111Z NLABPICT061903 sfsvcmgr[61581]: [Process] 61581 sfsvcmgr sfsvcmgr/sfsvcmgr.cpp:625:StopProcess|Error stopping service (database:0) as a process: ex=xServiceNotInProcessList at void solidfire::ServiceManager::StopProcess(const string&, solidfire::ServiceID, const std::vector<std::__cxx11::basic_string<char> >&) (sfsvcmgr/sfsvcmgr.cpp:614): Failed to find service"
+			},
+			{
+				"line" : "2020-02-05T22:24:35.935887Z zookeeper - INFO  [ProcessThread(sid:27 cport:-1)::PrepRequestProcessor@678] - Processed session termination for sessionid: 0x1b007455bf7c40f5"
+			},
+			{
+				"line" : "2020-02-05T22:24:35.935973Z zookeeper - WARN  [NIOWorkerThread-72:NIOServerCnxn@361] - Unable to read additional data from client sessionid 0x1b007455bf7c40f5, likely client has closed socket"
+			},
+			{
+				"line" : "2020-02-05T22:24:35.936075Z zookeeper - INFO  [NIOWorkerThread-72:NIOServerCnxn@999] - Closed socket connection for client /10.123.227.12:59009 which had sessionid 0x1b007455bf7c40f5"
+			},
+			{
+				"line" : "2020-02-05T22:24:38.702605Z zookeeper - INFO  [ProcessThread(sid:27 cport:-1)::PrepRequestProcessor@678] - Processed session termination for sessionid: 0x1f007d4c341c40af"
+			},
+			{
+				"line" : "2020-02-05T22:24:38.882613Z zookeeper - INFO  [ProcessThread(sid:27 cport:-1)::PrepRequestProcessor@678] - Processed session termination for sessionid: 0x1d007d36c32e3c63"
+			},
+			{
+				"line" : "2020-02-06T11:59:23.367771Z zookeeper - INFO  [ProcessThread(sid:27 cport:-1)::PrepRequestProcessor@678] - Processed session termination for sessionid: 0x1d007d36c32e4ca3"
+			},
+			{
+			       "line" : "2020-02-06T11:59:23.395926Z zookeeper - INFO  [NIOServerCxnFactory.AcceptThread:/10.123.227.10:2181:NIOServerCnxnFactory$AcceptThread@296] - Accepted socket connection from /10.123.227.12:53147"
+			},
+			{
+				"line" : "2020-02-06T11:59:23.396270Z zookeeper - WARN  [NIOWorkerThread-29:ZooKeeperServer@822] - Connection request from old client /10.123.227.12:53147; will be dropped if server is in r-o mode"
+			},
+			{
+			       "line" : "2020-02-06T11:59:23.396380Z zookeeper - INFO  [NIOWorkerThread-29:ZooKeeperServer@860] - Client attempting to establish new session at /10.123.227.12:53147; client last zxid is 0x0; server last zxid is 0xa0a5d7888"
+			},
+			{
+			       "line" : "2020-02-06T11:59:23.397546Z zookeeper - INFO  [CommitProcWorkThread-34:ZooKeeperServer@611] - Established session 0x1b007455bf7c5119 with negotiated timeout 20000 for client /10.123.227.12:53147"
+			},
+			{
+				"line" : "2020-02-06T11:59:23.403474Z zookeeper - INFO  [NIOWorkerThread-103:QuorumZooKeeperServer@132] - Submitting global closeSession request for session 0x1b007455bf7c5119"
+			},
+			{
+				"line" : "2020-02-06T11:59:23.403578Z zookeeper - INFO  [ProcessThread(sid:27 cport:-1)::PrepRequestProcessor@678] - Processed session termination for sessionid: 0x1b007455bf7c5119"
+			},
+			{
+				"line" : "2020-02-06T12:02:36.496933Z alln01-fab3-pib-az1-007 master-1[25467]: [MS] 26857 RPCServ-349 ms/MService.cpp:1205:operator()|Handling OnJsonRequest took too long: sender=445 message={this=0x7fba098ec0a0 msg=0x7fba098dd600 opcode=60 wasSent=0 requestTag=1718685 size=457 subcomponent=18446744073709551615 logContext=0 payloads=0 payloadsSize=0 rpcQueueTimeMS=0} requestJsonValue={\"action\":\"NodeAPI\",\"method\":\"TestPing\",\"params\":{\"attempts\":1,\"force\":true,\"hosts\":\"10.123.227.4,10.123.227.5,10.123.227.6,10.123.227.7,10.123.227.8,10.123.227.9,10.123.227.10,10.123.227.11,10.123.227.12,10.123.227.13,10.123.227.14,10.123.227.15,10.123.227.16,10.123.227.17,10.123.227.18,10.123.227.19,10.123.227.20,10.123.227.21\",\"packetSize\":8972,\"prohibitFragmentation\":true,\"timeoutMsec\":500,\"totalTimeoutSec\":30}}"
+			}
+
+
+		]
+	}
+}
