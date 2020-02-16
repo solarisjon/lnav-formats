@@ -1,8 +1,8 @@
 #! /usr/bin/env lnav -i
 {
-       	"sfmasterinfo" : {
+       	"sfmaster" : {
         	"title" : "Solidfire sf-master Log File",
-        	"description" : "Log description for SolidFire based sf-master.error",
+        	"description" : "Log description for SolidFire based sf-master log files",
         	"url" : "http://solidfire.com",
                 "file-pattern" : "sf-master.\\w*",
 		"regex" : {
