@@ -15,6 +15,7 @@
 		"multiline" : false,
 		"timestamp-field" : "timestamp",
 		"level-field" : "level",
+		"body-field" : "message",
 		"value" : {
 			"hostname" : {
                                 "kind" : "string",
@@ -24,12 +25,12 @@
 			"module" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
-                                "description" : "Moduke in info that is logging"
+                                "description" : "Module in sf-master.info that is logging"
                         },
 			"function" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
-                                "description" : "Function in info that is logging"
+                                "description" : "Function in sf-master.info that is logging"
                         },
 			"service" : {
                                 "kind" : "string",

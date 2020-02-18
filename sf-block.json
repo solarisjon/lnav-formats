@@ -11,6 +11,7 @@
 		},
 		"multiline" : false,
 		"timestamp-field" : "timestamp",
+		"body-field" : "message",
 		"value" : {
 			"hostname" : {
                                 "kind" : "string",
