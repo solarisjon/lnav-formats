@@ -3,14 +3,13 @@
        	"sfmaster" : {
         	"title" : "Solidfire sf-master Log File",
         	"description" : "Log description for SolidFire based sf-master log files",
-        	"url" : "http://solidfire.com",
                 "file-pattern" : "sf-master.\\w*",
 		"regex" : {
 			"error" : {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<hostname>\\w*[a-zA-Z0-9-]*) (?<service>\\w*-?\\d?\\[\\d{5}\\]): \\[(?<protocol>(\\w*-?\\d?))\\] (?<pid>\\d{5}) (?<srv>\\w[a-zA-Z0-9-_]*) (?<code>\\w[a-zA-Z/.]*):(?<codeline>\\d*):(?<event>\\w*)\\(?\\)?\\|(?<body>.*)$"
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<hostname>\\w*[a-zA-Z0-9-]*) (?<service>\\w*-?\\d?\\[\\d{5}\\]): \\[(?<protocol>(\\w*-?\\d?))\\] (?<pid>\\d{5}) (?<srv>\\w[a-zA-Z0-9-_]*) (?<code>\\w[a-zA-Z/.]*):(?<codeline>\\d*):(?<event>\\w*)\\(?\\)?\\|(?<message> ?\\w[a-zA-Z0-9\\-\\_\\,\\.\\/\\(\\)\\%\\:\\ \\=\\{\\}\\|]*)$"
 			},
 			"info" : {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<module>\\w*[a-zA-Z0-9-]*) - (?<level>\\w*)  \\[(?<function>\\w[a-zA-Z0-9@ \\-:\\.\\/$()]*)\\] - (?<body>.*)$"
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<module>\\w*[a-zA-Z0-9-]*) - (?<level>\\w*)  \\[(?<function>\\w[a-zA-Z0-9@ \\-:\\.\\/$()]*)\\] - (?<message> ?\\w[a-zA-Z0-9\\-\\_\\,\\.\\/\\(\\)\\%\\:\\ \\=\\{\\}\\|]*)$"
 			}
 		},
 		"multiline" : false,
@@ -67,7 +66,7 @@
                                 "foreign-key" : true,
                                 "description" : "The logfile event"
                         },
-			"body" : {
+			"message" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
                                 "description" : "Body of the message"
