@@ -4,6 +4,7 @@ lnav formats
 lnav : is a Log File Analysis navigator which can be found on https://github.com/tstack/lnav by Tim Stack
 
 Statically Linked
+
 OSX       https://github.com/tstack/lnav/releases/download/v0.8.5/lnav-0.8.5-os-x.zip
 
 Linux     https://github.com/tstack/lnav/releases/download/v0.8.5/lnav-0.8.5-linux-64bit.zip
