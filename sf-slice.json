@@ -3,11 +3,10 @@
        	"sfslice" : {
         	"title" : "Solidfire sf-slice Log File",
         	"description" : "Log description for SolidFire based sf-slice",
-        	"url" : "http://solidfire.com",
                 "file-pattern" : "sf-slice.\\w*",
 		"regex" : {
 			"error" : {
-				"pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[A-Za-z0-9-_]*) (?<type>\\w*)\\[(?<typepid>\\d{5})]: \\[(?<service>\\w*)] (?<pid>\\d*) (?<slicename>\\w[a-zA-Z0-9-]*) (?<codename>\\w[a-zA-Z.\\/]*):(?<codeline>\\d*):(?<action>\\w[a-zA-Z\\(\\)]*)\\|(?<message>.*$)"
+				"pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[A-Za-z0-9-_]*) (?<slicetype>\\w*)\\[(?<islicetypepid>\\d{5})]: \\[(?<isliceservice>\\w*)] (?<islicepid>\\d*) (?<slicename>\\w[a-zA-Z0-9-]*) (?<codename>\\w[a-zA-Z.\\/]*):(?<codeline>\\d*):(?<action>\\w[a-zA-Z\\(\\)]*)\\|(?<message>.*$)"
 			}
 		},
 		"multiline" : false,
@@ -18,22 +17,22 @@
                                 "foreign-key" : true,
                                 "description" : "Hostname of the log mesage"
                         },
-			"type" : {
+			"slicetype" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
                                 "description" : "Is this a slice , bulkvolume type"
                         },
-			"typepid" : {
+			"slicetypepid" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
                                 "description" : "ID for the type field"
                         },
-			"service" : {
+			"sliceservice" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
                                 "description" : "Service name"
                         },
-			"pid" : {
+			"slicepid" : {
                                 "kind" : "integer",
                                 "foreign-key" : true,
                                 "description" : "The pid of the service running"
