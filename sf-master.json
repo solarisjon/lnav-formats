@@ -6,7 +6,7 @@
                 "file-pattern" : "sf-master.\\w*",
 		"regex" : {
 			"error" : {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<hostname>\\w*[a-zA-Z0-9-]*) (?<service>\\w*-?\\d?\\[\\d{5}\\]): \\[(?<protocol>(\\w*-?\\d?))\\] (?<pid>\\d{5}) (?<srv>\\w[a-zA-Z0-9-_]*) (?<code>\\w[a-zA-Z/.]*):(?<codeline>\\d*):(?<event>\\w*)\\(?\\)?\\|(?<message> ?.*$)"
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<hostname>\\w*[a-zA-Z0-9-]*) (?<service>\\w*-?\\d?\\[\\d{5}\\]): \\[(?<protocol>(\\w*-?\\d?))\\] (?<pid>\\d{5}) (?<srv>\\w[a-zA-Z0-9-_]*) (?<codenamnamee>\\w[a-zA-Z/.]*):(?<codeline>\\d*):(?<event>\\w*)\\(?\\)?\\|(?<message> ?.*$)"
 			},
 			"info" : {
 				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{6}Z) (?<module>\\w*[a-zA-Z0-9-]*) - (?<level>\\w*)  \\[(?<function>\\w[a-zA-Z0-9@ \\-:\\.\\/$()]*)\\] - (?<message> ?.*$)"
@@ -51,7 +51,7 @@
 				"foreign-key" : true,
                                 "description" : "Service"
 			},
-			"code" : {
+			"codename" : {
                                 "kind" : "string",
                                 "foreign-key" : true,
                                 "description" : "The code path and filename"
