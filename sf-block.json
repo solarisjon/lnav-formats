@@ -1,0 +1,86 @@
+#! /usr/bin/env lnav -i
+{
+       	"sfblock" : {
+        	"title" : "Solidfire sf-block Log File",
+        	"description" : "Log description for SolidFire based sf-block log files from a support bundle",
+                "file-pattern" : "sf-block.\\w*",
+		"regex" : {
+			"error" : {
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[a-zA-Z0-9-_]*) (?<blocksvctype>\\w[a-zA-Z0-9]*)\\[(?<blocksvcid>\\d*)\\]: \\[(?<blockservicetype>\\w[a-zA-Z0-9-_]*)\\] (?<pid>\\d*) (?<blksvc>\\w[a-zA-Z0-9-_]*) (?<codename>.?\\/?\\w[.\\/a-zA-Z]*):(?<codeline>\\d*):(?<blkaction>\\w[a-zA-Z0-9-_]*)\\|(?<message> ?\\w[a-zA-Z0-9\\-\\_\\,\\.\\/\\(\\)\\%\\:\\ \\=\\{\\}\\|]*)$"
+			}
+		},
+		"multiline" : false,
+		"timestamp-field" : "timestamp",
+		"value" : {
+			"hostname" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Hostname of the log mesage"
+                        },
+			"blocksvctype" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Block service type"
+                        },
+			"blocksvcid" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "ID for the type field"
+                        },
+			"blockservicetype" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Service name"
+                        },
+			"pid" : {
+                                "kind" : "integer",
+                                "foreign-key" : true,
+                                "description" : "The pid of the service running"
+                        },
+			"blksvc" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "The slice name"
+                        },
+			"codename" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "The code path and filename"
+                        },
+			"codeline" : {
+                                "kind" : "integer",
+                                "foreign-key" : true,
+                                "description" : "Line of code that triggered the event"
+                        },
+			"blkaction" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "The logfile event"
+                        },
+			"message" : {
+                                "kind" : "string",
+                                "foreign-key" : true,
+                                "description" : "Body of the message"
+                	}
+		},
+		"sample" : [
+			{
+				"line" : "2020-01-20T04:12:04.746543Z alln01-fab3-pib-az1-007 block364[72672]: [BS] 74605 BSRPCServ-364 bs/BService.cpp:1479:HandlePingRequest|Ping response myServiceID=364 serviceStatus=Running totalMS=2 rpcReceiveQueueMS=0 responseCreationMS=1 rpcSendResponseMS=1"
+			},
+			{
+				"line" : "2020-01-20T04:12:07.955701Z alln01-fab3-pib-az1-007 block357[72665]: [Recorder] 72780 AsyncRecorderSin serviceshared/RecorderSink.cpp:269:FlushQueue|Flush completed msec=1 events=12 flushes=226"
+			},
+			{
+				"line" : "2020-01-20T04:12:30.294844Z alln01-fab3-pib-az1-007 block358[72666]: [Blocks] 77714 FileRecycler-358 serviceshared/DiskData.cpp:612:OnFileRecycled| fileNumber=327 firstValidFileNumber=328 freeSpacePct=5.03356 inUseData=158133186 Active data=352.09 GB (18%) Discarded data=1471.12 GB (77%) Unused space=96.64 GB (5%) Average recycle active (200 samples)=14% Recent recycle active (20 samples): 15% 14% 8% 14% 16% 14% 11% 16% 21% 21% 20% 18% 16% 18% 20% 14% 17% 19% 16% 13%"
+			},
+			{
+				"line" : "2020-01-20T04:12:37.335975Z alln01-fab3-pib-az1-007 block354[72662]: [Util] 74259 BSRPCServ-354 ./serviceshared/ConsolidatedQueueProcessingStats.ipp:211:LogAndResetStats| mStatPrefix=ConsQRead averagePrimaryTotalTimeUS=100 averagePrimaryPreQueueTimeUS=5 averagePrimaryQueueTimeUS=0 averagePrimaryExecutionTimeUS=95 primaryQueueCurrentSize=0 primaryTotalTimeSamples=122668 primaryQueueExceededSelectionLimitsCount=0 primaryPreQueueTimeSamples=122668 primaryQueueTimeSamples=0 primaryExecutionTimeSamples=122668 averageSecondaryTotalTimeUS=0 averageSecondaryPreQueueTimeUS=0 averageSecondaryQueueTimeUS=0 averageSecondaryExecutionTimeUS=0 secondaryQueueCurrentSize=0 secondaryTotalTimeSamples=0 secondaryPreQueueTimeSamples=0 secondaryQueueTimeSamples=0 secondaryExecutionTimeSamples=0 averageTertiaryTotalTimeUS=0 averageTertiaryPreQueueTimeUS=0 averageTertiaryQueueTimeUS=0 averageTertiaryExecutionTimeUS=0 tertiaryQueueCurrentSize=0 tertiaryTotalTimeSamples=0 tertiaryPreQueueTimeSamples=0 tertiaryQueueTimeSamples=0 tertiaryExecutionTimeSamples=0"
+			},
+			{
+				"line" : "2020-01-20T04:12:37.336102Z alln01-fab3-pib-az1-007 block354[72662]: [Util] 74259 BSRPCServ-354 ./serviceshared/ConsolidatedQueueProcessingStats.ipp:211:LogAndResetStats| mStatPrefix=ConsQWrite averagePrimaryTotalTimeUS=224 averagePrimaryPreQueueTimeUS=7 averagePrimaryQueueTimeUS=201 averagePrimaryExecutionTimeUS=14 primaryQueueCurrentSize=0 primaryTotalTimeSamples=103890 primaryQueueExceededSelectionLimitsCount=20218 primaryPreQueueTimeSamples=103890 primaryQueueTimeSamples=103890 primaryExecutionTimeSamples=103890 averageSecondaryTotalTimeUS=0 averageSecondaryPreQueueTimeUS=0 averageSecondaryQueueTimeUS=0 averageSecondaryExecutionTimeUS=0 secondaryQueueCurrentSize=0 secondaryTotalTimeSamples=0 secondaryPreQueueTimeSamples=0 secondaryQueueTimeSamples=0 secondaryExecutionTimeSamples=0 averageTertiaryTotalTimeUS=0 averageTertiaryPreQueueTimeUS=0 averageTertiaryQueueTimeUS=0 averageTertiaryExecutionTimeUS=0 tertiaryQueueCurrentSize=0 tertiaryTotalTimeSamples=0 tertiaryPreQueueTimeSamples=0 tertiaryQueueTimeSamples=0 tertiaryExecutionTimeSamples=0"
+			}
+
+
+		]
+	}
+}
