@@ -6,7 +6,7 @@
                 "file-pattern" : "sf-block.\\w*",
 		"regex" : {
 			"error" : {
-				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[a-zA-Z0-9-_]*) (?<blocksvctype>\\w[a-zA-Z0-9]*)\\[(?<blocksvcid>\\d*)\\]: \\[(?<blockservicetype>\\w[a-zA-Z0-9-_]*)\\] (?<pid>\\d*) (?<blksvc>\\w[a-zA-Z0-9-_]*) (?<codename>.?\\/?\\w[.\\/a-zA-Z]*):(?<codeline>\\d*):(?<blkaction>\\w[a-zA-Z0-9-_]*)\\|(?<message> ?\\w[a-zA-Z0-9\\-\\_\\,\\.\\/\\(\\)\\%\\:\\ \\=\\{\\}\\|]*)$"
+				"pattern" : "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[a-zA-Z0-9-_]*) (?<blocksvctype>\\w[a-zA-Z0-9]*)\\[(?<blocksvcid>\\d*)\\]: \\[(?<blockservicetype>\\w[a-zA-Z0-9-_]*)\\] (?<pid>\\d*) (?<blksvc>\\w[a-zA-Z0-9-_]*) (?<codename>.?\\/?\\w[.\\/a-zA-Z]*):(?<codeline>\\d*):(?<blkaction>\\w[a-zA-Z0-9-_]*)\\|(?<message> ?.*$)"
 			}
 		},
 		"multiline" : false,

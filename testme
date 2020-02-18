@@ -1,0 +1,13 @@
+LNAV=~/bin/lnav
+FILES="sf-master.info sf-master.error sf-slice.info sf-slice.error sf-block.info sf-block.error"
+
+
+
+for F in $FILES
+do
+	echo ""
+	echo "About to open $F"
+	sleep 3
+	$LNAV testlogs/$F
+	echo ""
+done

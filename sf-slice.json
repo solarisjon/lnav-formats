@@ -6,7 +6,7 @@
                 "file-pattern" : "sf-slice.\\w*",
 		"regex" : {
 			"error" : {
-				"pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[A-Za-z0-9-_]*) (?<slicetype>\\w*)\\[(?<islicetypepid>\\d{5})]: \\[(?<isliceservice>\\w*)] (?<islicepid>\\d*) (?<slicename>\\w[a-zA-Z0-9-]*) (?<codename>\\w[a-zA-Z.\\/]*):(?<codeline>\\d*):(?<action>\\w[a-zA-Z\\(\\)]*)\\|(?<message>.*$)"
+				"pattern" : "(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{6}Z) (?<hostname>\\w[A-Za-z0-9-_]*) (?<slicetype>\\w*)\\[(?<islicetypepid>\\d{5})]: \\[(?<isliceservice>\\w*)] (?<islicepid>\\d*) (?<slicename>\\w[a-zA-Z0-9-]*) (?<codename>\\w[a-zA-Z.\\/]*):(?<codeline>\\d*):(?<action>\\w[a-zA-Z\\(\\)]*)\\|(?<message> ?.*$)"
 			}
 		},
 		"multiline" : false,
