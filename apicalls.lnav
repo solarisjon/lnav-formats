@@ -1,0 +1,2 @@
+;SELECT log_time , hostname , log_body from sfmaster where protocol = "API" GROUP BY pid
+
