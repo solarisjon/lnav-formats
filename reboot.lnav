@@ -1,0 +1,7 @@
+#
+# @synopsis: reboot
+# @description: Identify reboots in kern.log
+#
+
+;select log_time, log_body from generic_log where ( log_body  like "%Linux version%" )
+
