@@ -1,0 +1,14 @@
+#
+# @synopsis: restart
+# @description: Identify system and element restarts
+#
+:echo "Kernel restarts"
+:echo
+;select log_time, log_body from generic_log where ( log_body  like "%Linux version%" )
+:write-cols-to -
+
+:echo "Application Restarts"
+:echo
+;select log_time, log_body from sfmaster where ( log_body like "%Starting up with currentVersion=%" )
+:write-cols-to -
+
