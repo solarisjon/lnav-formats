@@ -1,0 +1,55 @@
+#
+# @synopsis: clustermaster
+# @description: Interesting Events around cluster master moves
+#
+:echo
+:echo "iSCSI and Connection Monitor Issues where a Connection Failed"
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%Connection failed%")
+:write-cols-to -
+
+:echo
+:echo "iSCSI Abort (Set)"
+:echo
+;select log_time, hostname, initiatorPortName, log_line from sfmaster where ( action like "%AbortTask%")
+:write-cols-to -
+
+:echo
+:echo "HeartBeat Issues"
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%failed mHeartbeatInterfaces%")
+:write-cols-to -
+
+
+
+:echo
+:echo "Cluster Master Demoted"
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%Demoted from ClusterMaster, releasing mastership%" )
+:write-cols-to -
+
+:echo
+:echo "Looking for a new Cluster Master "
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%Looking for candidate%")
+:write-cols-to -
+
+:echo
+:echo "Cluster Master candidate names "
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%GetLeaderFromPathImpl%")
+:write-cols-to -
+
+
+:echo
+:echo "Cluster Master Changed Leader"
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%Changed leader in LeaderElection%")
+:write-cols-to -
+
+:echo
+:echo "Cluster Master Promoted "
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%Promoted to ClusterMaster%")
+:write-cols-to -
+

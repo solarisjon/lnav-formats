@@ -1,0 +1,11 @@
+#
+# @synopsis: mnode_boot
+# @description: mNode boot time interesting events
+#
+:echo
+:echo "mNode Booting Issues etc"
+:echo
+;select log_time, log_body from generic_log where log_body LIKE "%systemd-fsck%" or log_body like  "%Mounted%"or log_body like "%Mounting%" or log_body like "%Started File System Check%" or log_body like "%device/timeout%" or log_body like "%watchdog:%" or log_body like "%attempting task abort%" or log_body like "%Linux version%" or log_body like "%fsck%" or log_body like "%fail to get serial%" 
+
+:write-cols-to -
+

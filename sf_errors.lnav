@@ -1,0 +1,16 @@
+#
+# @synopsis: sferrors
+# @description: Interesting SF Errors
+#
+
+:echo "Failed HeartBeats"
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%sendto failed mHeartbeatInterfaces=%" )
+:write-cols-to -
+
+:echo
+:echo "Fault Checker"
+:echo
+;select log_time, hostname, log_body from sfmaster where ( log_body like "%ex=xSystemCommandFailure%")
+:write-cols-to -
+
