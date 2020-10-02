@@ -48,8 +48,8 @@
                                 "description" : "pid"
                         },
 			"srv" : {
-				"kind" : "string",
-				"foreign-key" : true,
+				                "kind" : "string",
+				                "foreign-key" : true,
                                 "description" : "Service"
 			},
 			"codename" : {
